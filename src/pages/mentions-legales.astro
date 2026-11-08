@@ -1,0 +1,35 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+// Textes finaux (DEC-VITRINE-025). Identité légale, hébergeur et messagerie : site.ts (fiche société Notion).
+---
+<Base titre="Mentions légales" description="Informations légales de Clic Silver Digital Solutions : éditeur, hébergement, propriété intellectuelle, données personnelles et accessibilité du site.">
+  <section class="section section--sombre">
+    <div class="conteneur">
+      <h1 class="titre-section titre-section--casse"><span class="gris">Mentions</span> <span class="blanc">légales</span></h1>
+      <div class="page-texte">
+        <h2>Éditeur du site</h2>
+        <p>{site.societe.denomination}, société à responsabilité limitée à associé unique (EURL), au capital social de 1 000 €.</p>
+        <p>Siège social : {site.societe.siege}.</p>
+        <p>{site.societe.rcs} — SIRET {site.societe.siret} — TVA intracommunautaire {site.societe.tva}.</p>
+        <p>Contact : <a href={`mailto:${site.contact.courriel}`}>{site.contact.courriel}</a> — <a href={`tel:${site.contact.telephoneLien}`}>{site.contact.telephone}</a>.</p>
+        <p>Directeur de la publication : {site.societe.directeurPublication}.</p>
+
+        <h2>Hébergement</h2>
+        <p>{site.hebergeur.texte} Contact de l’hébergeur : <a href={site.hebergeur.contact} rel="noopener">{site.hebergeur.contact.replace('https://', '')}</a> (assistance électronique ; GitHub ne propose pas de support téléphonique).</p>
+
+        <h2>Propriété intellectuelle</h2>
+        <p>Les contenus, textes, visuels et éléments graphiques de ce site sont protégés par les droits applicables à la propriété intellectuelle. Sauf indication contraire ou autorisation des titulaires de droits, leur reproduction ou réutilisation n’est pas autorisée. Les marques et visuels de tiers restent la propriété de leurs détenteurs respectifs.</p>
+
+        <h2>Données personnelles</h2>
+        <p>Cette vitrine statique ne comporte pas de base de données ni de formulaire traité par un serveur Clic Silver. Lorsqu’un visiteur nous écrit par e-mail, les informations transmises sont utilisées pour répondre à sa demande et assurer le suivi des échanges. Notre messagerie est hébergée par {site.messagerie}. Ces informations sont conservées au plus trois ans après notre dernier échange, durée recommandée par la CNIL. Pour exercer vos droits relatifs à vos données, contactez <a href={`mailto:${site.contact.courriel}`}>{site.contact.courriel}</a>.</p>
+
+        <h2>Cookies et mesure d’audience</h2>
+        <p>Ce site ne dépose aucun cookie et n’utilise aucun outil de mesure d’audience ni aucune ressource tierce : polices, images et feuilles de style sont servies par le site lui-même.</p>
+
+        <h2 id="accessibilite">Accessibilité</h2>
+        <p>Nous cherchons à proposer une navigation compréhensible et utilisable, notamment au clavier, avec des contrastes lisibles et des descriptions pertinentes des images. Si vous rencontrez une difficulté d’accès à un contenu, contactez-nous à <a href={`mailto:${site.contact.courriel}`}>{site.contact.courriel}</a>.</p>
+      </div>
+    </div>
+  </section>
+</Base>

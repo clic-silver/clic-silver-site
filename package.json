@@ -1,0 +1,21 @@
+{
+  "name": "clic-silver-site",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Site de Clic Silver Digital Solutions (clic-silver.com), généré en statique par Astro.",
+  "scripts": {
+    "dev": "astro dev --host 0.0.0.0",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "7.4.2"
+  },
+  "devDependencies": {
+    "sharp": "0.35.5"
+  },
+  "engines": {
+    "node": ">=22.23.4"
+  }
+}

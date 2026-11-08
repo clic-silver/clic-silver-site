@@ -1,0 +1,31 @@
+---
+import EnTete from '../components/EnTete.astro';
+import PiedDePage from '../components/PiedDePage.astro';
+import { site } from '../data/site';
+import '../styles/global.css';
+
+interface Props { titre: string; description: string }
+const { titre, description } = Astro.props;
+---
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titre} — {site.nom}</title>
+    <meta name="description" content={description} />
+    <!-- GitHub Pages n'envoie pas d'en-têtes HTTP personnalisés : CSP en meta (frame-ancestors non supporté en meta), DEC-VITRINE-027. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'self'; font-src 'self'; base-uri 'none'; form-action mailto:" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="icon" href={site.logo} type="image/svg+xml" />
+    <link rel="preload" href="/fonts/syne-latin.woff2" as="font" type="font/woff2" crossorigin />
+  </head>
+  <body>
+    <a class="evitement" href="#contenu">Aller au contenu</a>
+    <EnTete />
+    <main id="contenu">
+      <slot />
+    </main>
+    <PiedDePage />
+  </body>
+</html>

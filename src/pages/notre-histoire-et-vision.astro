@@ -1,0 +1,41 @@
+---
+import Base from '../layouts/Base.astro';
+import Emplacement from '../components/Emplacement.astro';
+import { pageContact } from '../data/site';
+// Textes finaux : docs/redaction/contenus-finaux.md (DEC-VITRINE-025).
+const engagements = [
+  { gras: 'Partir du besoin.', texte: 'Comprendre vos métiers, vos utilisateurs et vos contraintes avant de choisir la solution.' },
+  { gras: 'Rendre le pilotage lisible.', texte: 'Formaliser des priorités, des jalons, des responsabilités et des décisions partagées.' },
+  { gras: 'Construire pour durer.', texte: 'Prévoir la qualité, les tests, la sécurité, la documentation et l’exploitation dès la conception.' },
+  { gras: 'Transmettre et faire progresser.', texte: 'Former, documenter et organiser la continuité pour que votre équipe garde la maîtrise.' },
+];
+---
+<Base titre="Notre histoire et notre vision" description="Découvrez la vision de Clic Silver : un numérique utile, des projets pilotés avec clarté et un accompagnement continu, du besoin métier à l’exploitation.">
+  <section class="section section--sombre">
+    <div class="conteneur">
+      <p class="etiquette etiquette--sombre">À propos de Clic Silver</p>
+      <h1 class="titre-section titre-section--casse"><span class="gris">Notre histoire</span> <span class="blanc">et notre vision</span></h1>
+
+      <div class="duo">
+        <div class="page-texte">
+          <h2>Une conviction fondatrice</h2>
+          <p>Né en 2000 sous le nom d’Isis Web, devenu Clic Silver, notre projet est porté par son fondateur, Brice POTE, professionnel de l’informatique depuis plus de 25 ans. Clic Silver Digital Solutions, constituée en société en 2021, repose sur la même conviction depuis l’origine : la technologie n’a de valeur que lorsqu’elle améliore réellement le fonctionnement d’une organisation.</p>
+          <p>Depuis les Yvelines, nous intervenons auprès d’entreprises, d’associations et d’acteurs publics sur des problématiques de conseil, de conception, de développement et de pilotage SI. Notre approche relie la compréhension du métier aux exigences de réalisation, de qualité et d’exploitation. Nous accompagnons les initiatives locales comme les projets menés à l’international.</p>
+        </div>
+        <div class="duo__image"><Emplacement fichier="histoire-equipe.jpg" alt="Professionnels réunis pour cadrer une feuille de route de transformation" /></div>
+      </div>
+
+      <div class="page-texte">
+        <h2>Notre vision</h2>
+        <p>Faire du numérique un levier durable de performance : des outils compris par leurs utilisateurs, des architectures proportionnées aux besoins, une qualité vérifiable et une organisation capable de faire évoluer les solutions dans le temps. L’innovation nous intéresse lorsqu’elle répond à un problème concret.</p>
+        <p><strong>Notre manière de travailler.</strong> Un échange de cadrage, des objectifs compréhensibles, un backlog priorisé et des points réguliers. Pour les projets adaptés à l’Agile, nous travaillons en itérations de deux à trois semaines, avec démonstration, validation et ajustements. Le rythme reste proportionné au contexte de chaque client.</p>
+        <p><strong>Notre écosystème.</strong> Nous associons conseil, développement et pratiques DevOps. Pour l’hébergement, le cloud et la cybersécurité, nous pouvons mobiliser Merradis Group, partenaire spécialisé basé en Afrique de l’Ouest. Notre rôle est de garder une démarche cohérente de la conception à l’exploitation.</p>
+        <h2>Nos engagements</h2>
+        <ul>
+          {engagements.map((e) => <li><strong>{e.gras}</strong> {e.texte}</li>)}
+        </ul>
+        <p class="centre"><a class="bouton bouton--orange" href={pageContact.href}>Discutons ensemble</a></p>
+      </div>
+    </div>
+  </section>
+</Base>

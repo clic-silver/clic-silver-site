@@ -1,0 +1,15 @@
+.env
+node_modules/
+dist/
+.astro/
+captures/ancien-site/
+.debut-generation-images
+/*.zip
+# Documents de travail : conservés en local, jamais publiés (DEC-VITRINE-027)
+docs/
+captures/
+scripts/
+TEXTES.md
+IMAGES.md
+GROK-IMAGES.md
+PROMPT-CLAUDE-DESKTOP-CHROME.md

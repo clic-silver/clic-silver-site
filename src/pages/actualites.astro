@@ -1,0 +1,14 @@
+---
+// Page Actualités (DEC-VITRINE-020, 025) : en attente des premières publications, sans image.
+import Base from '../layouts/Base.astro';
+import { pageContact } from '../data/site';
+---
+<Base titre="Actualités et regards sur le numérique" description="Retrouvez bientôt les analyses et les actualités de Clic Silver sur les projets SI, le développement web, la gouvernance et les pratiques DevOps.">
+  <section class="detail-bandeau actualites">
+    <div class="conteneur">
+      <h1 class="detail-bandeau__titre">Actualités &amp; perspectives</h1>
+      <p class="actualites__texte">Notre espace de publications se prépare. En attendant, échangeons sur vos enjeux de développement, de pilotage ou de transformation numérique.</p>
+      <a class="bouton bouton--orange" href={pageContact.href}>{pageContact.libelle}</a>
+    </div>
+  </section>
+</Base>

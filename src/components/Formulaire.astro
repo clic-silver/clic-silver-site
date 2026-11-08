@@ -1,0 +1,42 @@
+---
+// Formulaire de prise de contact partagé (DEC-VITRINE-013, 019, 025) : bas de chaque page de détail, accueil et Nous contacter.
+// Vitrine statique : le message est préparé dans la messagerie du visiteur, rien n'est enregistré par le site.
+import { site } from '../data/site';
+import { interets, statutsJuridiques, type Interet } from '../data/formulaire';
+
+interface Props { coche?: Interet; titre?: string }
+const { coche, titre = 'Parlons de votre projet' } = Astro.props;
+---
+<form class="formulaire" action={`mailto:${site.contact.courriel}`} method="post" enctype="text/plain">
+  <h2 class="formulaire__titre">{titre}</h2>
+  <div class="formulaire__duo">
+    <label><span>Prénom</span><input name="prenom" autocomplete="given-name" /></label>
+    <label><span>Nom</span><input name="nom" autocomplete="family-name" /></label>
+  </div>
+  <div class="formulaire__duo">
+    <label><span>Adresse e-mail *</span><input name="email" type="email" autocomplete="email" required /></label>
+    <label><span>Téléphone</span><input name="telephone" type="tel" autocomplete="tel" /></label>
+  </div>
+  <div class="formulaire__duo">
+    <label><span>Entreprise ou organisation</span><input name="entreprise" autocomplete="organization" /></label>
+    <label><span>Votre fonction</span><input name="fonction" autocomplete="organization-title" /></label>
+  </div>
+  <label><span>Taille et contexte de votre organisation</span><input name="informations-entreprise" /></label>
+  <fieldset class="formulaire__cases">
+    <legend>Quel accompagnement recherchez-vous ?</legend>
+    {interets.map((i) => (
+      <label class="case"><input type="checkbox" name="interet" value={i.libelle} checked={i.id === coche} /><span>{i.libelle}</span></label>
+    ))}
+  </fieldset>
+  <label><span>Statut de votre organisation *</span>
+    <select name="statut-juridique" required>
+      <option value="">Sélectionnez une option</option>
+      {statutsJuridiques.map((s) => <option>{s}</option>)}
+    </select>
+  </label>
+  <label><span>Enveloppe budgétaire indicative (€)</span><input name="budget" inputmode="numeric" /></label>
+  <label><span>Décrivez votre besoin, votre contexte et vos objectifs</span><textarea name="message"></textarea></label>
+  <p class="note">* Champs obligatoires. Votre message est préparé dans votre application de messagerie ; aucune information n’est enregistrée sur ce site.</p>
+  <button class="bouton bouton--orange" type="submit">Préparer mon e-mail</button>
+  <p class="repli">Vous préférez écrire directement ? <a href={`mailto:${site.contact.courriel}`}>{site.contact.courriel}</a></p>
+</form>

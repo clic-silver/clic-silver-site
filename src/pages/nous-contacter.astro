@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+import Emplacement from '../components/Emplacement.astro';
+import Formulaire from '../components/Formulaire.astro';
+import { site } from '../data/site';
+---
+<Base titre="Contact et projets numériques" description="Vous avez un projet web, une application métier ou un besoin de pilotage SI ? Échangez avec Clic Silver Digital Solutions sur vos objectifs et vos contraintes.">
+  <section class="section--claire">
+    <div class="projet">
+      <div>
+        <h1 class="projet__titre projet__titre--contact">Votre projet mérite une vraie discussion.</h1>
+        <p class="projet__texte">Présentez-nous votre besoin, même s’il n’est pas encore entièrement défini. Nous échangeons sur vos objectifs, les premières priorités et la manière d’avancer. Écrivez-nous à <a href={`mailto:${site.contact.courriel}`}>{site.contact.courriel}</a> ou appelez-nous au <a href={`tel:${site.contact.telephoneLien}`}>{site.contact.telephone}</a>.</p>
+        <div class="projet__image"><Emplacement fichier="accueil-projet.jpg" alt="Professionnel préparant une discussion autour d’un projet numérique" prioritaire /></div>
+      </div>
+      <Formulaire />
+    </div>
+  </section>
+</Base>

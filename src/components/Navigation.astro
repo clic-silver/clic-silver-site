@@ -1,0 +1,25 @@
+---
+// Navigation principale. Sur mobile, un menu dépliant sans JavaScript (élément details).
+import { navigation, pageContact } from '../data/site';
+
+const courant = Astro.url.pathname.replace(/\/?$/, '/');
+const actif = (href: string) => (href === '/' ? courant === '/' : courant.startsWith(href));
+---
+<nav class="nav" aria-label="Navigation principale">
+  <ul class="nav__liste">
+    {navigation.map((l) => (
+      <li><a class:list={['nav__lien', { 'nav__lien--actif': actif(l.href) }]} href={l.href} aria-current={actif(l.href) ? 'page' : undefined}>{l.libelle}</a></li>
+    ))}
+  </ul>
+  <a class="bouton bouton--orange nav__contact" href={pageContact.href}>{pageContact.libelle}</a>
+
+  <details class="nav__mobile">
+    <summary aria-label="Ouvrir le menu"><span></span><span></span><span></span></summary>
+    <ul>
+      {navigation.map((l) => (
+        <li><a class:list={['nav__lien', { 'nav__lien--actif': actif(l.href) }]} href={l.href} aria-current={actif(l.href) ? 'page' : undefined}>{l.libelle}</a></li>
+      ))}
+      <li><a class="bouton bouton--orange" href={pageContact.href}>{pageContact.libelle}</a></li>
+    </ul>
+  </details>
+</nav>

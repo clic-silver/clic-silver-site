@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import CartePrestation from '../components/CartePrestation.astro';
+import { prestations } from '../data/pages-detail';
+
+// Cartes et pages de détail partagent les mêmes données (DEC-VITRINE-019).
+const nouvelles = new Set(['pilotage-gouvernance']);
+---
+<Base titre="Nos prestations numériques" description="Sites web, e-commerce, applications métiers, marketing digital, maintenance, AMOA et pilotage SI : des prestations adaptées à vos enjeux et à votre budget.">
+  <section class="section section--claire">
+    <div class="conteneur">
+      <p class="etiquette etiquette--claire">Des solutions à chaque étape</p>
+      <h1 class="titre-section"><span class="gris">Nos</span> <span class="noir">prestations</span></h1>
+      <p class="chapeau chapeau--serre"><strong>Deux modes de collaboration.</strong> Pour un besoin bien délimité, nous proposons un périmètre et un devis au forfait. Pour une problématique spécifique ou évolutive, nous construisons ensemble une réponse sur mesure, avec objectifs, livrables et calendrier définis. La maintenance et le pilotage peuvent aussi prendre la forme d’un accompagnement régulier.</p>
+      <div class="grille-prestations grille-prestations--page">
+        {prestations.map((p) => <CartePrestation titre={p.titre} image={p.carte} alt={p.altCarte} href={`/nos-prestations/${p.slug}/`} nouveau={nouvelles.has(p.slug)} />)}
+      </div>
+    </div>
+  </section>
+</Base>

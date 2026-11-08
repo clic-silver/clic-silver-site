@@ -1,0 +1,13 @@
+---
+// Carte noire arrondie : image, titre, bouton orange (Nos prestations, Notre expertise).
+import Emplacement from './Emplacement.astro';
+
+interface Props { titre: string; image: string; alt: string; bouton?: string; href?: string; variante?: 'noire' | 'ardoise'; nouveau?: boolean }
+const { titre, image, alt, bouton = 'En savoir plus', href = '/nous-contacter/', variante = 'noire', nouveau = false } = Astro.props;
+---
+<article class={`carte-prestation carte-prestation--${variante}`}>
+  <Emplacement fichier={image} alt={alt} classe="carte-prestation__image" />
+  <h3 class="carte-prestation__titre">{titre}{nouveau && <span class="sr-only"> (nouvelle prestation)</span>}</h3>
+  <slot />
+  <a class="bouton bouton--orange carte-prestation__bouton" href={href}>{bouton}<span class="sr-only"> : {titre}</span></a>
+</article>

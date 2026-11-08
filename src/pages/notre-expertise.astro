@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import Emplacement from '../components/Emplacement.astro';
+import CartePrestation from '../components/CartePrestation.astro';
+import { imageExiste } from '../lib/images';
+import { expertises } from '../data/pages-detail';
+
+// Les quatre premières cartes réutilisent les images de l'accueil (DEC-VITRINE-018) ; chaque carte mène à sa page de détail (DEC-VITRINE-019).
+// Le bloc de statistiques de l'ancien site (75 %, 94 %, 2x, 70 %) est retiré : aucune source (DEC-VITRINE-012).
+---
+<Base titre="Nos domaines d’expertise" description="Développement web, audit, conseil, marketing SEO, accompagnement et DevOps Cloud : les expertises de Clic Silver au service de vos projets numériques.">
+  <section class="section section--sombre">
+    <div class="conteneur">
+      <p class="etiquette etiquette--sombre">Nos savoir-faire</p>
+      <h1 class="titre-section titre-section--casse"><span class="gris">Notre</span> <span class="blanc">expertise</span></h1>
+      <div class:list={["grande-image", { "grande-image--sans-photo": !imageExiste("expertise-hero.jpg") }]}><Emplacement fichier="expertise-hero.jpg" alt="Professionnels collaborant sur un projet numérique" prioritaire /></div>
+      <p class="intro">Du besoin métier à l’architecture technique, de la visibilité digitale à l’exploitation, nos expertises se complètent pour faire progresser vos projets avec méthode et discernement.</p>
+      <div class="grille-expertise">
+        {expertises.map((d) => <CartePrestation titre={d.titre} image={d.carte} alt={d.altCarte} href={`/notre-expertise/${d.slug}/`} variante="ardoise" />)}
+      </div>
+    </div>
+  </section>
+</Base>

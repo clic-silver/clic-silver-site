@@ -1,0 +1,39 @@
+---
+// Gabarit unique des pages de détail (prestations et expertise), DEC-VITRINE-019, ordre de docs/contenu-pages-interieures.md :
+// bandeau sombre avec le titre, grande image, accroche, introduction, liste « ce que nous… », liste des cibles, formulaire.
+import Base from '../layouts/Base.astro';
+import Emplacement from './Emplacement.astro';
+import Formulaire from './Formulaire.astro';
+import type { PageDetail } from '../data/pages-detail';
+
+interface Props { page: PageDetail; rubrique: { libelle: string; href: string; tout: string } }
+const { page, rubrique } = Astro.props;
+---
+<Base titre={page.titreOnglet} description={page.description}>
+  <section class="detail-bandeau">
+    <div class="conteneur">
+      <p class="detail-bandeau__fil">{rubrique.libelle}</p>
+      <h1 class="detail-bandeau__titre">{page.titre}</h1>
+      <a class="detail-retour detail-retour--haut" href={rubrique.href}><span aria-hidden="true">←</span> {rubrique.tout}</a>
+    </div>
+  </section>
+  <div class="detail-image">
+    <Emplacement fichier={`pages/${page.bandeau}`} alt={page.alt} prioritaire />
+  </div>
+  <article class="detail-contenu">
+    <p class="detail-contenu__accroche">{page.accroche}</p>
+    <p>{page.introduction}</p>
+    <h2>{page.titreListe}</h2>
+    <ul>
+      {page.points.map((p) => <li>{p.gras && <strong>{p.gras}</strong>}{p.texte}</li>)}
+    </ul>
+    <h2>{page.titreCible}</h2>
+    <ul>
+      {page.cibles.map((c) => <li>{c}</li>)}
+    </ul>
+    <p class="detail-contenu__retour"><a class="detail-retour" href={rubrique.href}><span aria-hidden="true">←</span> {rubrique.tout}</a></p>
+  </article>
+  <section class="detail-formulaire">
+    <Formulaire coche={page.interet} />
+  </section>
+</Base>

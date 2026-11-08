@@ -1,0 +1,10 @@
+---
+import PageDetail from '../../components/PageDetail.astro';
+import { prestations } from '../../data/pages-detail';
+
+export function getStaticPaths() {
+  return prestations.map((page) => ({ params: { slug: page.slug }, props: { page } }));
+}
+const { page } = Astro.props;
+---
+<PageDetail page={page} rubrique={{ libelle: 'Nos prestations', href: '/nos-prestations/', tout: "Nos prestations" }} />

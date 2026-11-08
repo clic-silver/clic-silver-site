@@ -1,0 +1,10 @@
+---
+import PageDetail from '../../components/PageDetail.astro';
+import { expertises } from '../../data/pages-detail';
+
+export function getStaticPaths() {
+  return expertises.map((page) => ({ params: { slug: page.slug }, props: { page } }));
+}
+const { page } = Astro.props;
+---
+<PageDetail page={page} rubrique={{ libelle: 'Notre expertise', href: '/notre-expertise/', tout: "Nos expertises" }} />

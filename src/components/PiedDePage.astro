@@ -1,0 +1,50 @@
+---
+import Icone from './Icone.astro';
+import { site, navigation, pageContact, pageMentions, pageAccessibilite } from '../data/site';
+---
+<footer class="pied">
+  <div class="pied__grille">
+    <div class="pied__logo">
+      <img src={site.logo} alt={site.logoAltPied} width="230" height="80" loading="lazy" />
+    </div>
+
+    <div>
+      <h2 class="pied__titre">Échangeons</h2>
+      <p>{site.contact.adresse}</p>
+      <p><a href={`mailto:${site.contact.courriel}`}>{site.contact.courriel}</a></p>
+      {site.presences.length > 0 && <>
+        <h2 class="pied__titre pied__titre--espace">Présence internationale</h2>
+        <ul class="pied__liste">
+          {site.presences.map((p) => <li><a class="souligne" href={p.url}>{p.libelle}</a></li>)}
+        </ul>
+      </>}
+    </div>
+
+    <div>
+      <h2 class="pied__titre">Explorer</h2>
+      <ul class="pied__liste">
+        <li><a href={navigation[0].href}>{navigation[0].libelle}</a></li>
+        <li><a href={navigation[1].href}>{navigation[1].libelle}</a></li>
+        <li><a href={navigation[3].href}>{navigation[3].libelle}</a></li>
+        <li><a href={navigation[4].href}>{navigation[4].libelle}</a></li>
+        <li><a href={pageContact.href}>{pageContact.libelle}</a></li>
+      </ul>
+      <ul class="pied__liste pied__liste--legal">
+        <li><a href={pageMentions.href}>{pageMentions.libelle}</a></li>
+        <li><a href={pageAccessibilite.href}>{pageAccessibilite.libelle}</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="pied__titre">Suivez-nous</h2>
+      <ul class="pied__reseaux">
+        {site.reseaux.map((r) => (
+          <li>{r.url
+            ? <a href={r.url} aria-label={r.nom} rel="noopener"><Icone nom={r.icone} taille={44} /></a>
+            : <span aria-label={r.nom} role="img"><Icone nom={r.icone} taille={44} /></span>}</li>
+        ))}
+      </ul>
+    </div>
+  </div>
+  <p class="pied__droits">© 2026 {site.nom}. Tous droits réservés.</p>
+</footer>

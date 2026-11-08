@@ -1,0 +1,20 @@
+---
+// Emplacement d'image (DEC-VITRINE-011, 017) : si public/images/<fichier> existe à la construction, la photo est affichée.
+// Sinon, un visuel graphique aux couleurs du site (dégradé, trame, icône du thème) : jamais de nom de fichier ni de cadre vide.
+// La liste des photos à fournir est dans IMAGES.md.
+import Icone from './Icone.astro';
+import { imageExiste } from '../lib/images';
+
+interface Props { fichier: string; alt: string; classe?: string; prioritaire?: boolean; icone?: string }
+const { fichier, alt, classe = '', prioritaire = false, icone } = Astro.props;
+
+const themes: [RegExp, string][] = [
+  [/e-commerce/, 'panier'], [/mobile/, 'mobile'], [/application-web|developpement|vitrine/, 'code'],
+  [/seo|marketing/, 'graphique'], [/tma|mco|devops|cloud/, 'serveur'], [/audit|amoa|pilotage|gouvernance/, 'tableau'],
+  [/consulting|equipe|histoire|projet/, 'equipe'], [/innovation|hero/, 'globe'],
+];
+const iconeTheme = icone ?? themes.find(([m]) => m.test(fichier))?.[1] ?? 'globe';
+---
+{imageExiste(fichier)
+  ? <img class={`emplacement ${classe}`} src={`/images/${fichier}`} alt={alt} loading={prioritaire ? 'eager' : 'lazy'} decoding="async" />
+  : <div class={`emplacement visuel-defaut ${classe}`} role="img" aria-label={alt}><span class="visuel-defaut__icone"><Icone nom={iconeTheme} taille={64} /></span></div>}

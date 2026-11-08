@@ -1,0 +1,115 @@
+---
+import Base from '../layouts/Base.astro';
+import Emplacement from '../components/Emplacement.astro';
+import Icone from '../components/Icone.astro';
+import Formulaire from '../components/Formulaire.astro';
+import { pageContact } from '../data/site';
+import { imageExiste } from '../lib/images';
+
+const mosaique = [1, 2, 3, 4, 5].map((n) => `accueil-mosaique-${n}.jpg`);
+const appelComplet = mosaique.every(imageExiste);
+const innovation = imageExiste('accueil-innovation.jpg');
+
+// Textes finaux : docs/redaction/contenus-finaux.md (DEC-VITRINE-025).
+const piliers = [
+  { gras: 'Deux façons de créer de la valeur.', texte: 'Nous aidons vos équipes à gagner du temps grâce à des outils et processus mieux conçus ; nous aidons aussi votre activité à gagner en visibilité, en contacts et en opportunités commerciales. Les deux démarches commencent par vos objectifs, pas par une liste de technologies.' },
+  { gras: 'Une méthode lisible.', texte: 'Nous cadrons les besoins, priorisons un backlog et avançons par étapes courtes, avec démonstrations et validations régulières lorsque le projet s’y prête. Les tests, le déploiement et la transmission font partie du travail, pas de la dernière minute.' },
+  { gras: 'Des expertises mobilisées selon le projet.', texte: 'Pour les sujets d’hébergement, de cloud et de cybersécurité, nous pouvons nous appuyer sur notre partenaire infrastructure Merradis Group. Un interlocuteur pilote la démarche et coordonne les contributions utiles.' },
+];
+const valeurs = [
+  { n: '01', titre: 'Comprendre', texte: 'Nous partons de vos enjeux métier, de vos utilisateurs et de vos contraintes. Le périmètre, les priorités et les critères de succès sont définis avant d’engager la réalisation.' },
+  { n: '02', titre: 'Maîtriser', texte: 'Backlog priorisé, étapes visibles, tests, documentation et points réguliers : vous savez ce qui avance, ce qui bloque et ce qui doit être arbitré.' },
+  { n: '03', titre: 'Faire durer', texte: 'Notre accompagnement continue au-delà de la livraison : suivi des usages, évolutions, maintenance et transfert de compétences pour faire vivre votre investissement.' },
+];
+const expertises = [
+  { titre: 'Développement web', image: 'accueil-expertise-developpement-web.jpg', alt: 'Code d’une application web sur un écran', icone: 'puce', texte: 'Sites professionnels, applications métier et intégrations API : des solutions adaptées à vos processus, conçues pour être utiles, maintenables et évolutives.' },
+  { titre: 'Audit & conseils', image: 'accueil-expertise-audit-conseils.jpg', alt: 'Consultants étudiant une architecture et des indicateurs de performance', icone: 'bouclier', texte: 'Diagnostic de l’existant, comparaison de scénarios, analyse des risques et feuille de route priorisée : des décisions étayées avant d’investir.' },
+  { titre: 'Marketing & SEO', image: 'accueil-expertise-marketing-seo.jpg', alt: 'Indicateurs de visibilité et de conversion sur un tableau de bord marketing', icone: 'puce', texte: 'Référencement, contenus et campagnes : nous relions votre visibilité en ligne aux intentions de vos clients et aux objectifs de votre activité.' },
+  { titre: 'Consulting & accompagnement', image: 'accueil-expertise-consulting.jpg', alt: 'Atelier de travail entre responsables métiers et équipe informatique', icone: 'bouclier', texte: 'Cadrage, AMOA, coordination des équipes et pilotage des prestataires : nous structurons vos projets pour rendre les engagements, les décisions et les résultats visibles.' },
+  { titre: 'Pilotage de projets et gouvernance du SI', image: 'prestations-pilotage-gouvernance.jpg', alt: 'Tableau de pilotage avec roadmap, indicateurs et décisions', icone: 'tableau', texte: 'Lorsque votre application est déjà en service, nous aidons à organiser les demandes métiers, les recettes, les mises en production et la relation avec les prestataires. Pour passer de la gestion des urgences à une feuille de route partagée.' },
+  { titre: 'DevOps & Cloud', image: 'expertise-devops-cloud.jpg', alt: 'Équipe observant un pipeline de déploiement et une infrastructure cloud', icone: 'nuage', texte: 'Pipelines CI/CD, conteneurs, supervision et infrastructures : nous relions la construction des applications à des pratiques de déploiement et d’exploitation maîtrisées, en mobilisant des expertises partenaires selon les besoins.' },
+];
+---
+<Base titre="Conseil, ingénierie et pilotage SI" description="Conseil IT, applications web, gouvernance SI, DevOps et accompagnement digital : Clic Silver donne forme à vos projets et en sécurise l’exploitation.">
+  <section class="heros">
+    <div class="heros__image"><Emplacement fichier="accueil-hero.jpg" alt="Professionnels échangeant autour d’un projet numérique" prioritaire /></div>
+    <h1 class="heros__titre">Vos projets numériques, de l’idée à l’exploitation.</h1>
+    <div class="heros__encart">
+      <p>Clic Silver Digital Solutions — conseil, ingénierie et pilotage SI</p>
+      <p>Un site qui génère des contacts. Une application qui simplifie le quotidien. Un système d’information mieux piloté. Nous relions vos objectifs métier aux choix techniques pour concevoir, faire évoluer et exploiter des solutions utiles, avec un interlocuteur engagé à vos côtés.</p>
+      <p>Parlons de votre prochain projet.</p>
+    </div>
+  </section>
+
+  <section class="section section--sombre">
+    <div class="conteneur">
+      <h2 class="titre-section titre-section--argent">Le numérique utile</h2>
+      <p class="chapeau">Basée dans les Yvelines, Clic Silver Digital Solutions accompagne entreprises, associations et organisations publiques, en France et à l’international. Notre double expertise : digitaliser vos opérations pour gagner en efficacité et développer votre activité grâce au web. Du cadrage au maintien en conditions opérationnelles, nous gardons le cap sur les résultats attendus.</p>
+      <div class:list={["visuel", { "visuel--sans-photo": !innovation }]}>
+        <div class="visuel__image"><Emplacement fichier="accueil-innovation.jpg" alt="Professionnelle utilisant des interfaces numériques immersives" /></div>
+        <div class="flottante flottante--1"><div class="pastille"><Icone nom="globe" taille={40} /></div>Applications métiers, API et ingénierie web</div>
+        <div class="flottante flottante--2"><div class="pastille"><Icone nom="consultant" taille={40} /></div>Conseil, pilotage, intégration et gouvernance SI</div>
+      </div>
+      <div class="piliers">
+        {piliers.map((p) => <p><strong>{p.gras}</strong> {p.texte}</p>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--claire">
+    <div class="conteneur">
+      <h2 class="titre-section"><span class="gris">Nos</span> <span class="noir">engagements concrets</span></h2>
+      <p class="chapeau">Un projet digital ne se résume ni à une technologie ni à une livraison. Nous cherchons d’abord à comprendre les usages, à rendre les décisions lisibles et à construire des solutions capables d’évoluer.</p>
+      <div class="trois">
+        {valeurs.map((v) => (
+          <article class="carte-valeur">
+            <div class="carte-valeur__entete"><div class="carte-valeur__numero" aria-hidden="true"><span>{v.n}</span></div><h3>{v.titre}</h3></div>
+            <p>{v.texte}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--claire section--suite">
+    <div class="conteneur">
+      <h2 class="titre-section"><span class="gris">Des</span> <span class="noir">expertises complémentaires</span></h2>
+      <p class="chapeau chapeau--serre">Une même exigence de qualité, de la conception d’un service web au pilotage de son exploitation. Nous intervenons sur une mission ciblée ou tout au long de votre projet.</p>
+      <div class="deux">
+        {expertises.map((e) => (
+          <article class="carte-expertise">
+            <span class="pastille-coin"><Icone nom={e.icone} taille={28} /></span>
+            <div class="carte-expertise__image"><Emplacement fichier={e.image} alt={e.alt} /></div>
+            <h3>{e.titre}</h3>
+            <p>{e.texte}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class:list={["appel", { "appel--compact": !appelComplet }]}>
+    <div class="mosaique mosaique--1"><Emplacement fichier="accueil-mosaique-1.jpg" alt="Personne utilisant une application sur smartphone" /></div>
+    <div class="mosaique mosaique--2"><Emplacement fichier="accueil-mosaique-2.jpg" alt="Professionnel utilisant un ordinateur portable" /></div>
+    <div class="flottante flottante--a"><div class="pastille"><Icone nom="seo" taille={48} /></div>Visibilité &amp; acquisition</div>
+    <div class="appel__centre">
+      <h2 class="appel__titre">Un projet à faire avancer ?</h2>
+      <a class="bouton bouton--orange" href={pageContact.href}>Échangeons ensemble</a>
+    </div>
+    <div class="mosaique mosaique--3"><Emplacement fichier="accueil-mosaique-3.jpg" alt="Consultant travaillant sur un ordinateur portable" /></div>
+    <div class="mosaique mosaique--4"><Emplacement fichier="accueil-mosaique-4.jpg" alt="Tableau de bord de suivi d’une application" /></div>
+    <div class="flottante flottante--b"><div class="pastille"><Icone nom="nuage" taille={48} /></div>Cloud &amp; déploiement</div>
+    <div class="mosaique mosaique--5"><Emplacement fichier="accueil-mosaique-5.jpg" alt="Équipe analysant des indicateurs sur une tablette" /></div>
+    <div class="flottante flottante--c"><div class="pastille"><Icone nom="puce" taille={48} /></div>Sécurité &amp; continuité</div>
+  </section>
+
+  <section class="section--claire">
+    <div class="projet">
+      <div>
+        <h2 class="projet__titre">Parlons de vos enjeux</h2>
+        <div class="projet__image"><Emplacement fichier="accueil-projet.jpg" alt="Professionnel réfléchissant aux étapes d’un projet numérique" /></div>
+      </div>
+      <Formulaire />
+    </div>
+  </section>
+</Base>

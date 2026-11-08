@@ -1,0 +1,15 @@
+# Site clic-silver.com (Astro construit, servi par nginx), en local seulement (DEC-VITRINE-002, 010). Réglages : .env (voir .env.example).
+name: ${VITRINE_NOM:-clic-silver-attente}
+services:
+  web:
+    build: .
+    image: ${VITRINE_NOM:-clic-silver-attente}:local
+    container_name: ${VITRINE_NOM:-clic-silver-attente}
+    ports:
+      - "127.0.0.1:${VITRINE_PORT:-8080}:80"
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
+      - /tmp
+    restart: "no"

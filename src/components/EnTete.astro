@@ -1,0 +1,12 @@
+---
+import Navigation from './Navigation.astro';
+import { site } from '../data/site';
+---
+<header class="entete">
+  <div class="entete__barre">
+    <a class="entete__logo" href="/" aria-label={`${site.nom} — accueil`}>
+      <img src={site.logo} alt={site.logoAlt} width="200" height="70" />
+    </a>
+    <Navigation />
+  </div>
+</header>
