@@ -6,8 +6,6 @@ import Formulaire from '../components/Formulaire.astro';
 import { pageContact } from '../data/site';
 import { imageExiste } from '../lib/images';
 
-const mosaique = [1, 2, 3, 4, 5].map((n) => `accueil-mosaique-${n}.jpg`);
-const appelComplet = mosaique.every(imageExiste);
 const innovation = imageExiste('accueil-innovation.jpg');
 
 // Textes finaux : docs/redaction/contenus-finaux.md (DEC-VITRINE-025).
@@ -63,7 +61,8 @@ const expertises = [
       <div class="trois">
         {valeurs.map((v) => (
           <article class="carte-valeur">
-            <div class="carte-valeur__entete"><div class="carte-valeur__numero" aria-hidden="true"><span>{v.n}</span></div><h3>{v.titre}</h3></div>
+            <span class="carte-valeur__numero" aria-hidden="true">{v.n}</span>
+            <h3>{v.titre}</h3>
             <p>{v.texte}</p>
           </article>
         ))}
@@ -88,20 +87,6 @@ const expertises = [
     </div>
   </section>
 
-  <section class:list={["appel", { "appel--compact": !appelComplet }]}>
-    <div class="mosaique mosaique--1"><Emplacement fichier="accueil-mosaique-1.jpg" alt="Personne utilisant une application sur smartphone" /></div>
-    <div class="mosaique mosaique--2"><Emplacement fichier="accueil-mosaique-2.jpg" alt="Professionnel utilisant un ordinateur portable" /></div>
-    <div class="flottante flottante--a"><div class="pastille"><Icone nom="seo" taille={48} /></div>Visibilité &amp; acquisition</div>
-    <div class="appel__centre">
-      <h2 class="appel__titre">Un projet à faire avancer ?</h2>
-      <a class="bouton bouton--orange" href={pageContact.href}>Échangeons ensemble</a>
-    </div>
-    <div class="mosaique mosaique--3"><Emplacement fichier="accueil-mosaique-3.jpg" alt="Consultant travaillant sur un ordinateur portable" /></div>
-    <div class="mosaique mosaique--4"><Emplacement fichier="accueil-mosaique-4.jpg" alt="Tableau de bord de suivi d’une application" /></div>
-    <div class="flottante flottante--b"><div class="pastille"><Icone nom="nuage" taille={48} /></div>Cloud &amp; déploiement</div>
-    <div class="mosaique mosaique--5"><Emplacement fichier="accueil-mosaique-5.jpg" alt="Équipe analysant des indicateurs sur une tablette" /></div>
-    <div class="flottante flottante--c"><div class="pastille"><Icone nom="puce" taille={48} /></div>Sécurité &amp; continuité</div>
-  </section>
 
   <section class="section--claire">
     <div class="projet">
