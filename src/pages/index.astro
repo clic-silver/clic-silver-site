@@ -15,9 +15,9 @@ const piliers = [
   { gras: 'Des expertises mobilisées selon le projet.', texte: 'Pour les sujets d’hébergement, de cloud et de cybersécurité, nous pouvons nous appuyer sur notre partenaire infrastructure Merradis Group. Un interlocuteur pilote la démarche et coordonne les contributions utiles.' },
 ];
 const valeurs = [
-  { n: '01', titre: 'Comprendre', texte: 'Nous partons de vos enjeux métier, de vos utilisateurs et de vos contraintes. Le périmètre, les priorités et les critères de succès sont définis avant d’engager la réalisation.' },
-  { n: '02', titre: 'Maîtriser', texte: 'Backlog priorisé, étapes visibles, tests, documentation et points réguliers : vous savez ce qui avance, ce qui bloque et ce qui doit être arbitré.' },
-  { n: '03', titre: 'Faire durer', texte: 'Notre accompagnement continue au-delà de la livraison : suivi des usages, évolutions, maintenance et transfert de compétences pour faire vivre votre investissement.' },
+  { n: '01', icone: 'seo', titre: 'Comprendre', texte: 'Nous partons de vos enjeux métier, de vos utilisateurs et de vos contraintes. Le périmètre, les priorités et les critères de succès sont définis avant d’engager la réalisation.' },
+  { n: '02', icone: 'tableau', titre: 'Maîtriser', texte: 'Backlog priorisé, étapes visibles, tests, documentation et points réguliers : vous savez ce qui avance, ce qui bloque et ce qui doit être arbitré.' },
+  { n: '03', icone: 'bouclier', titre: 'Faire durer', texte: 'Notre accompagnement continue au-delà de la livraison : suivi des usages, évolutions, maintenance et transfert de compétences pour faire vivre votre investissement.' },
 ];
 const expertises = [
   { titre: 'Développement web', image: 'accueil-expertise-developpement-web.jpg', alt: 'Code d’une application web sur un écran', icone: 'puce', texte: 'Sites professionnels, applications métier et intégrations API : des solutions adaptées à vos processus, conçues pour être utiles, maintenables et évolutives.' },
@@ -61,7 +61,10 @@ const expertises = [
       <div class="trois">
         {valeurs.map((v) => (
           <article class="carte-valeur">
-            <span class="carte-valeur__numero" aria-hidden="true">{v.n}</span>
+            <div class="carte-valeur__haut">
+              <span class="carte-valeur__pastille"><Icone nom={v.icone} taille={30} /></span>
+              <span class="carte-valeur__numero" aria-hidden="true">{v.n}</span>
+            </div>
             <h3>{v.titre}</h3>
             <p>{v.texte}</p>
           </article>
