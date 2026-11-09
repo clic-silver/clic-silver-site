@@ -9,7 +9,7 @@ export const site = {
   logoAltPied: 'Logo Clic Silver Digital Solutions',
   contact: {
     courriel: 'contact@clicsilver.com',
-    adresse: 'Achères (78) — Île-de-France, France', // ville affichée (marketing), DEC-0408 ; le siège légal n'apparaît qu'aux mentions légales
+    adresse: '78630 Orgeval — Île-de-France, France', // siège de la société (DEC-VITRINE-028) ; Achères est l'adresse personnelle de Brice, jamais sur le site
     telephone: '+33 6 07 94 55 79',
     telephoneLien: '+33607945579',
   },
